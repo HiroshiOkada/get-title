@@ -4,23 +4,23 @@
     var options = {};
     $.each(global.formats, function (k,v) {
       if (!$('#cb-' + k).is(':checked')) {
-        options[k] = global.chromeStorage.NOT_USE;
+        options[k] = global.rwOptions.NOT_USE;
       } else if ($('#rb-' + k).is(':checked')) {
-        options[k] = global.chromeStorage.USE_DEFAULT;
+        options[k] = global.rwOptions.USE_DEFAULT;
       } else {
-        options[k] = global.chromeStorage.USE;
+        options[k] = global.rwOptions.USE;
       }
     });
-    global.chromeStorage.saveOptions(options, function (options) {
+    global.rwOptions.saveOptions(options, function (options) {
       updateFields(options);
     });
   }
   function updateFields(options) {
     $.each(global.formats, function (k,v) {
-      if (options[k] === global.chromeStorage.USE) {
+      if (options[k] === global.rwOptions.USE) {
         $('#cb-' + k).prop('checked', true);
         $('#rb-' + k).prop('checked', false);
-      } else if (options[k] === global.chromeStorage.USE_DEFAULT) {
+      } else if (options[k] === global.rwOptions.USE_DEFAULT) {
         $('#cb-' + k).prop('checked', true);
         $('#rb-' + k).prop('checked', true);
       } else {
@@ -63,7 +63,7 @@
       });
     });
   }
-  global.chromeStorage.loadOptions(function (options) {
+  global.rwOptions.loadOptions(function (options) {
     setupFields(options);
     updateFields(options);
   });

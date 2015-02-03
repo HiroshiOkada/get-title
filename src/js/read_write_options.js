@@ -1,5 +1,6 @@
-(function (exports) {
+(function (global) {
   "use strict";
+  var exports = {};
   exports.NOT_USE     = 0;
   exports.USE         = 1;
   exports.USE_DEFAULT = 2;
@@ -43,5 +44,6 @@
       fn(options);
     });
   };
-}(this.chromeStorage = {}));
+  global.rwOptions = exports;
+})(this);
 

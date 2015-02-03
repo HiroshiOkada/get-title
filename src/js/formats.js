@@ -1,5 +1,6 @@
-(function (exports) {
+(function (global) {
   "use strict";
+  var exports = {};
   function encodeHTML(rawText) {
     return $('<div/>').text(rawText).html();
   }
@@ -37,4 +38,5 @@
              '](' + url + ')';
     }
   };
-})(this.formats = {});
+  global.formats = exports;
+})(this);

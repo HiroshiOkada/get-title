@@ -1,9 +1,9 @@
 (function (global) {
   "use strict";
   function setupTextField(url, title) {
-    global.chromeStorage.loadOptions(function (options) {
+    global.rwOptions.loadOptions(function (options) {
       $.each(global.formats, function (k,v) {
-        if (options[k] !== global.chromeStorage.NOT_USE) {
+        if (options[k] !== global.rwOptions.NOT_USE) {
           $('#titles').append(
             '<div class="form-group">' +
               '<label for="' + k  + '">' + v.caption + '</label>' +
@@ -22,7 +22,7 @@
             document.execCommand('copy');
           });
         }
-        if (options[k] === global.chromeStorage.USE_DEFAULT) {
+        if (options[k] === global.rwOptions.USE_DEFAULT) {
           $('#' + k + '_text').select();
           document.execCommand('copy');
         }
