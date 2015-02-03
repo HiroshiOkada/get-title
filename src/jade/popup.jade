@@ -1,0 +1,15 @@
+extends ./_layout.jade
+
+block title
+  title Copy HTML
+
+block content
+  div(class="container")
+    div(class="raw")
+      div(class="col-md-12")
+        form(id="titles")
+
+block postscript
+  script(src="js/formats.js")
+  script(src="js/chrome_storage.js")
+  script(src="js/popup.js")
