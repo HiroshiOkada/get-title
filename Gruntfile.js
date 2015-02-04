@@ -4,6 +4,7 @@ module.exports = function(grunt) {
 
   config.clean = {
     dist: [ 'dist/'],
+    zip: ['*.zip']
   };
 
   config.copy = { bower_components: { files: [
@@ -88,6 +89,15 @@ module.exports = function(grunt) {
         "dist/popup.html": ["src/jade/popup.jade"],
         "dist/options.html": ["src/jade/options.jade"]
       }
+    },
+    release: {
+      options: {
+        pretty: false
+      },
+      files: {
+        "dist/popup.html": ["src/jade/popup.jade"],
+        "dist/options.html": ["src/jade/options.jade"]
+      }
     }
   };
 
@@ -105,6 +115,17 @@ module.exports = function(grunt) {
       src: [
         'src/js/*.js'
       ]
+    }
+  };
+
+  config.compress = {
+    release: {
+      options: {
+        archive: 'get-title.zip'
+      },
+      expand: true,
+      cwd: 'dist/',
+      src: ['**/*']
     }
   };
 
@@ -136,5 +157,14 @@ module.exports = function(grunt) {
     'copy:images',
     'jade:dev'
   ]);
-  grunt.registerTask( 'release', ['clean:dist', 'copy:bower_components']);
+  grunt.registerTask( 'release', [
+    'clean:dist',
+    'copy:manifest',
+    'copy:bower_components',
+    'copy:js',
+    'copy:images',
+    'jade:release',
+    'clean:zip',
+    'compress:release'
+  ]);
 };
