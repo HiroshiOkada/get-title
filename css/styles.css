@@ -9,13 +9,13 @@ body {
     width: 100%;
 }
 
-.row {
+.content-row {
     display: flex;
     flex-wrap: wrap;
 }
 
-.col-md-12,
-.col-md-8 {
+.full-width,
+.main-content {
     width: 100%;
 }
 
@@ -40,18 +40,18 @@ body {
     cursor: pointer;
 }
 
-.table {
+.options-table {
     width: 100%;
     border-collapse: collapse;
 }
 
-.table th,
-.table td {
+.options-table th,
+.options-table td {
     border: 1px solid #ddd;
     padding: 8px;
     text-align: left;
 }
 
-.table th {
+.options-table th {
     background-color: #f2f2f2;
 }
