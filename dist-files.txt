@@ -1,0 +1,12 @@
+manifest.json
+options.html
+popup.html
+css\styles.css
+images\icon128.png
+images\icon19.png
+images\icon38.png
+images\icon48.png
+js\formats.js
+js\options.js
+js\popup.js
+js\read_write_options.js
