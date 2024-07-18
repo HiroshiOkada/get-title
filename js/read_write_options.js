@@ -1,3 +1,9 @@
+/**
+ * read_write_options.js
+ * This script provides functionality for loading and saving options for the Get Title extension.
+ * It also includes logic for adjusting options to ensure at least one format is always selected.
+ */
+
 (() => {
   'use strict';
 
@@ -7,6 +13,11 @@
     USE_DEFAULT: 2
   };
 
+  /**
+   * Adjusts the options to ensure at least one format is selected and only one is set as default.
+   * @param {Object} options - The options to adjust.
+   * @returns {Object} The adjusted options.
+   */
   const adjustOptions = (options) => {
     const keys = ['plain', 'html', 'linkHtml', 'linkTextile', 'linkMarkdown'];
     const useKeys = keys.filter(key => options[key] === exports.USE);
@@ -24,6 +35,10 @@
     return options;
   };
 
+  /**
+   * Loads the options from chrome.storage.sync.
+   * @returns {Promise<Object>} A promise that resolves to the loaded options.
+   */
   exports.loadOptions = () => {
     const defaultOptions = {
       plain: exports.USE,
@@ -40,6 +55,11 @@
     });
   };
 
+  /**
+   * Saves the options to chrome.storage.sync.
+   * @param {Object} newOptions - The options to save.
+   * @returns {Promise<Object>} A promise that resolves to the saved and adjusted options.
+   */
   exports.saveOptions = (newOptions) => {
     const options = adjustOptions(newOptions);
     return new Promise((resolve) => {
